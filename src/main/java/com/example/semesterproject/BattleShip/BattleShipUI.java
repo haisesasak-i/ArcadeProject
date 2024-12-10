@@ -46,6 +46,7 @@ public class BattleShipUI extends Application {
                return;
 
             }
+            primaryStage.close();
             this.gameScene(primaryStage,username.getText());
         });
         VBox inputBox = new VBox();
@@ -108,6 +109,7 @@ public class BattleShipUI extends Application {
         this.updatedStats(remainingShips,hits,Misses,backend);
     }
     public void gameScene(Stage primaryStage ,String userName) {
+
         BattleShip backend = new BattleShip();
         BorderPane uiLayout = new BorderPane();
         uiLayout.setStyle("-fx-background-color:  black;-fx-padding: 10px,3px,3px,3px");
@@ -153,7 +155,11 @@ public class BattleShipUI extends Application {
         hintButton.setStyle("-fx-background-color:  Green ;-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 18px;");
         hintButton.setPrefWidth(160);
         topLayout.setPrefWidth(1100);
-        topLayout.setSpacing(640);
+        if(userName.length()>=6) {
+            topLayout.setSpacing(610);
+        }
+        else
+            topLayout.setSpacing(680);
         hintButton.setOnAction(actionEvent -> {
             int [] shipPosition = backend.hintSystem();
             if(shipPosition!=null) {
@@ -190,7 +196,7 @@ public class BattleShipUI extends Application {
                     this.updatedStats(remainingShips,hits,misses,backend);
                     if(backend.isGameOver()) {
                         primaryStage.close();
-
+                        this.endingScene(primaryStage,userName,backend,remainingShips,hits,misses);
 
                     }
                 } catch (RowColumnException e) {
@@ -200,7 +206,42 @@ public class BattleShipUI extends Application {
         }
         Scene battleShipScene = new Scene(uiLayout);
         primaryStage.setScene(battleShipScene);
+        primaryStage.show();
     }
+    public void endingScene(Stage primaryStage, String userName, BattleShip backend, Label shipRemaining, Label hits, Label misses) {
+        Stage secondaryStage = new Stage();
+        secondaryStage.setTitle(primaryStage.getTitle());
+        secondaryStage.setResizable(false);
+        secondaryStage.setWidth(600);
+        secondaryStage.setHeight(600);
 
+        Label stats = this.getStyledlabel("Congratulations! You won\nYour stats are:\n" + shipRemaining.getText() + "\n" + hits.getText() + "\n" + misses.getText());
+        stats.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;");
+
+
+        Button tryAgainButton = new Button("Try Again");
+        tryAgainButton.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: #2ecc71; -fx-padding: 10px 20px;");
+        tryAgainButton.setOnAction(event -> {
+            secondaryStage.close();
+            this.gameScene(primaryStage,userName);
+        });
+
+
+        Button exitButton = new Button("Exit");
+        exitButton.setOnAction(event -> {
+            secondaryStage.close();
+        });
+        exitButton.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: #e74c3c; -fx-padding: 10px 20px;");
+
+        // Arrange the buttons and label with spacing in a VBox
+        VBox buttonLayoutAndLabel = new VBox();
+        buttonLayoutAndLabel.setStyle("-fx-background-color: black; -fx-alignment: center; -fx-padding: 20px;");
+        buttonLayoutAndLabel.setSpacing(20);
+        buttonLayoutAndLabel.getChildren().addAll(stats,tryAgainButton, exitButton);
+
+        buttonLayoutAndLabel.setAlignment(Pos.CENTER);
+        secondaryStage.setScene(new Scene(buttonLayoutAndLabel));
+        secondaryStage.show();
+    }
 }
 
