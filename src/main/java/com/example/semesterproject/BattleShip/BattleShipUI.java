@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -113,9 +115,10 @@ public class BattleShipUI extends Application {
         BattleShip backend = new BattleShip();
         BorderPane uiLayout = new BorderPane();
         uiLayout.setStyle("-fx-background-color:  black;-fx-padding: 10px,3px,3px,3px");
+        Media missSound = new Media(this.getClass().getResource("/miss.wav").toExternalForm());
 
+        Media hitSound = new Media(this.getClass().getResource("/Hit.wav").toExternalForm());
 
-        //labels for stats
 
 
         ArrayList<Button> coordinatesOfShips = new ArrayList<>();
@@ -184,11 +187,15 @@ public class BattleShipUI extends Application {
                         return;
                     }
                     else  if(backend.processGuess(row,col)){
+                        MediaPlayer hitSoundPlayer = new MediaPlayer(hitSound);
+                        hitSoundPlayer.play();
                         currentShipCoordinate.setStyle("-fx-padding: 2px;-fx-font-size: 20px;-fx-font-weight: bold;-fx-text-fill: white;-fx-background-color:green;-fx-border-width: 2px;-fx-border-style: solid;-fx-border-color: white;-fx-border-radius: 2px");
                         currentShipCoordinate.setText("HIT");
 
                     }
                     else{
+                        MediaPlayer missSoundPlayer = new MediaPlayer(missSound);
+                        missSoundPlayer.play();
                         currentShipCoordinate.setStyle("-fx-padding: 2px;-fx-font-size: 20px;-fx-font-weight: bold;-fx-text-fill: white;-fx-background-color:red;-fx-border-width: 2px;-fx-border-style: solid;-fx-border-color: white;-fx-border-radius: 2px");
                         currentShipCoordinate.setText("MISS");
                     }
@@ -209,6 +216,9 @@ public class BattleShipUI extends Application {
         primaryStage.show();
     }
     public void endingScene(Stage primaryStage, String userName, BattleShip backend, Label shipRemaining, Label hits, Label misses) {
+        Media winningsSound = new Media(this.getClass().getResource("/winning.wav").toExternalForm());
+        MediaPlayer winningSoundPlayer = new MediaPlayer(winningsSound);
+        winningSoundPlayer.play();
         Stage secondaryStage = new Stage();
         secondaryStage.setTitle(primaryStage.getTitle());
         secondaryStage.setResizable(false);
