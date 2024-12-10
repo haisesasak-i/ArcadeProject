@@ -20,7 +20,9 @@ public class BattleShipUI extends Application {
     public void start(Stage primaryStage) {
         BattleShip backend = new BattleShip();
         BorderPane uiLayout = new BorderPane();
-        uiLayout.setStyle("-fx-background-color: black;-fx-padding: 10px,3px,3px,3px");
+        uiLayout.setStyle("-fx-background-color:  black;-fx-padding: 10px,3px,3px,3px");
+        uiLayout.setPrefWidth(1100);
+        uiLayout.setPrefHeight(1100);
         //labels for stats
 
 
@@ -109,7 +111,7 @@ public class BattleShipUI extends Application {
                 }
             });
         }
-        Scene battleShipScene = new Scene(uiLayout, 1100, 1100);
+        Scene battleShipScene = new Scene(uiLayout);
         primaryStage.setTitle("Battle Ship");
         primaryStage.setResizable(false);
         primaryStage.setScene(battleShipScene);
