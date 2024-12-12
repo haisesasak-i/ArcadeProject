@@ -12,5 +12,6 @@ module com.example.semesterproject {
     opens com.example.semesterproject.NumberGuessingGame to javafx.fxml;
     exports com.example.semesterproject.RockPaperScissors;
     opens com.example.semesterproject.RockPaperScissors to javafx.fxml;
+    exports  com.example.semesterproject.GameSelectionMenu;
 
 }
