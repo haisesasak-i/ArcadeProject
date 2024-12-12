@@ -170,6 +170,7 @@ public class BattleShipUI extends Application {
                 for (Button currentButton : coordinatesOfShips) {
                     if (GridPane.getRowIndex(currentButton) == shipPosition[0] && GridPane.getColumnIndex(currentButton) == shipPosition[1]) {
                         currentButton.setStyle("-fx-padding: 2px;-fx-font-size: 30px;-fx-font-weight: bold;-fx-text-fill: white;-fx-background-color:yellow;-fx-border-width: 2px;-fx-border-style: solid;-fx-border-color: white;-fx-border-radius: 2px");
+                        break;
                     }
                 }
             }
