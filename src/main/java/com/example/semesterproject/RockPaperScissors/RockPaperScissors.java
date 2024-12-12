@@ -1,5 +1,6 @@
 package com.example.semesterproject.RockPaperScissors;
 
+import com.example.semesterproject.GameSelectionMenu.GameSelectionMenu;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -197,7 +198,10 @@ public class RockPaperScissors extends Application {
 
         Button closeButton = new Button("Close");
         closeButton.getStyleClass().add("close-button");
-        closeButton.setOnAction(e -> primaryStage.close());
+        closeButton.setOnAction(e -> {primaryStage.close();
+                GameSelectionMenu menu = new GameSelectionMenu();
+        menu.start(new Stage());}
+        );
 
         VBox layout = new VBox(20, finalResultLabel, playerScoreLabel, computerScoreLabel, winnerLabel, closeButton);
         layout.setAlignment(Pos.CENTER);

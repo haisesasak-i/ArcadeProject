@@ -1,5 +1,6 @@
 package com.example.semesterproject.NumberGuessingGame;
 
+import com.example.semesterproject.GameSelectionMenu.GameSelectionMenu;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -7,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
+import com.example.semesterproject.GameSelectionMenu.GameSelectionMenu;
 import java.net.URL;
 import java.util.Random;
 
@@ -165,7 +166,10 @@ public class NumberGuessingGame extends Application {
 
         Button exitButton = new Button("Exit");
         exitButton.getStyleClass().add("game-button");
-        exitButton.setOnAction(e -> Platform.exit());
+        exitButton.setOnAction(e -> {Platform.exit();
+            GameSelectionMenu menu = new GameSelectionMenu();
+            menu.start(new Stage());}
+        );
 
         gameOverLayout.getChildren().addAll(gameOverLabel, playAgainButton, exitButton);
 
@@ -190,7 +194,10 @@ public class NumberGuessingGame extends Application {
 
         Button exitButton = new Button("Exit");
         exitButton.getStyleClass().add("game-button");
-        exitButton.setOnAction(e -> Platform.exit());
+        exitButton.setOnAction(e -> {Platform.exit();
+                GameSelectionMenu menu = new GameSelectionMenu();
+                menu.start(new Stage());}
+        );
 
         congratsLayout.getChildren().addAll(congratsLabel, playAgainButton, exitButton);
 

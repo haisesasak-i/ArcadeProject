@@ -14,6 +14,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import com.example.semesterproject.GameSelectionMenu.GameSelectionMenu;
 
 
 import java.util.ArrayList;
@@ -309,7 +310,10 @@ public class TicTacToeUI extends Application {
         });
         exitButton.setOnAction(event ->
         {oldStage.close();
-                stage.close();});
+                stage.close();
+            GameSelectionMenu menu = new GameSelectionMenu();
+            menu.start(new Stage());
+        });
 
         stage.setScene(scene);
         stage.show();

@@ -1,5 +1,6 @@
 package com.example.semesterproject.BattleShip;
 
+import com.example.semesterproject.GameSelectionMenu.GameSelectionMenu;
 import com.example.semesterproject.TicTakToe.RowColumnException;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -240,6 +241,8 @@ public class BattleShipUI extends Application {
         Button exitButton = new Button("Exit");
         exitButton.setOnAction(event -> {
             secondaryStage.close();
+            GameSelectionMenu menu = new GameSelectionMenu();
+            menu.start(new Stage());
         });
         exitButton.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: #e74c3c; -fx-padding: 10px 20px;");
 
