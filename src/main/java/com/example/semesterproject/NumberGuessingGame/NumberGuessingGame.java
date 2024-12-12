@@ -7,6 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import com.example.semesterproject.GameSelectionMenu.GameSelectionMenu;
 import java.net.URL;
@@ -87,6 +89,8 @@ public class NumberGuessingGame extends Application {
         guessField.setPromptText("Enter your guess (1-100)");
         guessField.getStyleClass().add("input-field");
 
+        Media media = new Media(this.getClass().getResource("/tapSound.wav").toExternalForm());
+
         Button submitButton = new Button("Submit");
         submitButton.getStyleClass().add("game-button");
 
@@ -94,6 +98,9 @@ public class NumberGuessingGame extends Application {
         feedbackLabel.getStyleClass().add("feedback-label");
 
         submitButton.setOnAction(e -> {
+
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.play();
             String input = guessField.getText();
             try {
                 int guess = Integer.parseInt(input);
@@ -103,7 +110,7 @@ public class NumberGuessingGame extends Application {
                 if (guess == targetNumber) {
                     showCongratulationsWindow(stage);
                 } else if (remainingGuesses == 0) {
-                    if (guesses == 10) {
+                    if (guesses == 5) {
                         showBonusOfferWindow(stage);
                     } else {
                         showGameOverWindow(stage);
@@ -145,7 +152,7 @@ public class NumberGuessingGame extends Application {
 
         bonusLayout.getChildren().addAll(bonusLabel, yesButton, noButton);
 
-        Scene scene = new Scene(bonusLayout, 600, 400);
+        Scene scene = new Scene(bonusLayout, 800, 800);
         applyStylesheet(scene);
 
         stage.setTitle("Bonus Offer");
@@ -166,7 +173,7 @@ public class NumberGuessingGame extends Application {
 
         Button exitButton = new Button("Exit");
         exitButton.getStyleClass().add("game-button");
-        exitButton.setOnAction(e -> {Platform.exit();
+        exitButton.setOnAction(e -> {stage.close();
             GameSelectionMenu menu = new GameSelectionMenu();
             menu.start(new Stage());}
         );
@@ -194,7 +201,7 @@ public class NumberGuessingGame extends Application {
 
         Button exitButton = new Button("Exit");
         exitButton.getStyleClass().add("game-button");
-        exitButton.setOnAction(e -> {Platform.exit();
+        exitButton.setOnAction(e -> {stage.close();
                 GameSelectionMenu menu = new GameSelectionMenu();
                 menu.start(new Stage());}
         );

@@ -309,10 +309,15 @@ public class TicTacToeUI extends Application {
 
         });
         exitButton.setOnAction(event ->
-        {oldStage.close();
+        {
+                oldStage.close();
                 stage.close();
             GameSelectionMenu menu = new GameSelectionMenu();
+
             menu.start(new Stage());
+
+
+
         });
 
         stage.setScene(scene);

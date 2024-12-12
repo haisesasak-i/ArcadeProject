@@ -22,6 +22,8 @@ public class GameSelectionMenu extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Arcade Title
+
+
         Text title = new Text("🎮 Arcade Games 🎮");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 36));
         title.setFill(Color.DARKORANGE);
@@ -38,6 +40,7 @@ public class GameSelectionMenu extends Application {
 
                 tiktaktoe.start(primaryStage);
         });
+
         Button battleshipButton = createGameButton("Battleship");
         battleshipButton.setOnAction(event -> {
                 battleShipUI.start(primaryStage);
@@ -67,6 +70,7 @@ public class GameSelectionMenu extends Application {
                 rockPaperScissors.start(primaryStage);
         });
 
+
         // Layout
         VBox vbox = new VBox(20, title, ticTacToeButton, battleshipButton, numberGuessingButton, rockPaperScissorsButton, randomGameButton);
         vbox.setAlignment(Pos.CENTER);
@@ -75,6 +79,9 @@ public class GameSelectionMenu extends Application {
 
         // Scene setup
         Scene scene = new Scene(vbox, 800, 800);
+        primaryStage.setWidth(800);
+        primaryStage.setHeight(800);
+        primaryStage.setResizable(false);
 
         // Stage setup
         primaryStage.setTitle("Arcade Game Selection");
