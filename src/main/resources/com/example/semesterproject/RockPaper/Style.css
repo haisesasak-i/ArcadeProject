@@ -1,0 +1,123 @@
+/* General layout for all screens */
+.input-layout, .main-layout, .result-layout {
+    -fx-padding: 20;
+    -fx-alignment: center;
+    -fx-background-color: #1a1f3b; /* Dark navy background */
+    -fx-border-color: #4a5065; /* Subtle contrast border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 10, 0.5, 0, 0);
+}
+
+/* Labels for text */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #d3d3d3; /* Muted light gray text */
+}
+
+/* Result label styling */
+.result-label {
+    -fx-font-size: 20px;
+    -fx-text-fill: #ffcc00; /* Golden yellow text for results */
+    -fx-padding: 15;
+    -fx-border-color: #ffcc00;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #24305e; /* Slightly lighter blue background */
+    -fx-alignment: center;
+}
+
+/* Game Buttons (Rock, Paper, Scissors) */
+.game-button {
+    -fx-background-color: linear-gradient(#b22222, #800000); /* Dark red gradient */
+    -fx-text-fill: #ffffff; /* White text for strong contrast */
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-color: #a52a2a; /* Brownish red border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.5, 0, 0);
+}
+
+.game-button:hover {
+    -fx-background-color: linear-gradient(#cc3737, #a52a2a); /* Brighter red hover */
+    -fx-border-color: #d2691e; /* Darker border on hover */
+    -fx-cursor: hand;
+}
+
+/* Special styling for Rock, Paper, Scissors buttons */
+.rock-button, .paper-button, .scissors-button {
+    -fx-background-color: linear-gradient(#4caf50, #388e3c); /* Green gradient */
+    -fx-text-fill: #ffffff; /* White text for contrast */
+    -fx-font-size: 16px; /* Larger font size */
+    -fx-padding: 15px 30px; /* Increased padding */
+    -fx-border-color: #3b8e3b; /* New border color: brighter green */
+    -fx-border-width: 3px; /* Thicker border */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+}
+
+.rock-button:hover, .paper-button:hover, .scissors-button:hover {
+    -fx-background-color: linear-gradient(#388e3c, #2e7d32); /* Brighter green hover */
+    -fx-border-color: #1b5e20; /* Darkest green for hover outline */
+}
+
+/* Show Final Result Button */
+.show-result-button {
+    -fx-background-color: linear-gradient(#0066cc, #004a99); /* Blue gradient */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 16px;
+    -fx-padding: 12px 24px;
+    -fx-border-color: #004080; /* Dark blue border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.5, 0, 0);
+}
+
+.show-result-button:hover {
+    -fx-background-color: linear-gradient(#004a99, #003366); /* Darker blue hover */
+    -fx-border-color: #00274d; /* Darkest blue for hover */
+    -fx-cursor: hand;
+}
+
+/* Close Button */
+.close-button {
+    -fx-background-color: linear-gradient(#8b0000, #5a0000); /* Dark red gradient */
+    -fx-text-fill: #ffffff; /* White text for strong contrast */
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-color: #b22222; /* Dark red border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+}
+
+.close-button:hover {
+    -fx-background-color: linear-gradient(#a52a2a, #800000); /* Brighter red hover */
+    -fx-border-color: #ff6347; /* Light red border on hover */
+    -fx-cursor: hand;
+}
+
+/* Text Field Styling */
+.text-field {
+    -fx-background-color: #334a7c; /* Muted dark blue background */
+    -fx-text-fill: #ffcccc; /* Light pinkish text */
+    -fx-font-size: 14px;
+    -fx-border-color: #0066cc; /* Blue border */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Button Container */
+.hbox {
+    -fx-spacing: 15px;
+    -fx-alignment: center;
+}

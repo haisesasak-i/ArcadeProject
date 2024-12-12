@@ -51,13 +51,13 @@ public class NumberGuessingGame extends Application {
                 warningLabel.setText(""); // Clear warning if input is valid
                 username = loginInput; // Save username
                 targetNumber = new Random().nextInt(100) + 1; // Generate target number
-                showMainGameWindow(stage, 10); // Start the game with 10 guesses
+                showMainGameWindow(stage, 5); // Start the game with 5 guesses
             }
         });
 
         loginLayout.getChildren().addAll(welcomeLabel, loginField, loginButton, warningLabel);
 
-        Scene scene = new Scene(loginLayout, 600, 400);
+        Scene scene = new Scene(loginLayout, 800, 800);
         applyStylesheet(scene);
 
         stage.setTitle("Number Guessing Game");
@@ -119,7 +119,7 @@ public class NumberGuessingGame extends Application {
 
         gameLayout.getChildren().addAll(instructionLabel, usernameLabel, guessesLabel, guessField, submitButton, feedbackLabel);
 
-        Scene scene = new Scene(gameLayout, 600, 400);
+        Scene scene = new Scene(gameLayout, 800, 800);
         applyStylesheet(scene);
 
         stage.setTitle("Number Guessing Game");
@@ -169,7 +169,7 @@ public class NumberGuessingGame extends Application {
 
         gameOverLayout.getChildren().addAll(gameOverLabel, playAgainButton, exitButton);
 
-        Scene scene = new Scene(gameOverLayout, 600, 400);
+        Scene scene = new Scene(gameOverLayout, 800, 800);
         applyStylesheet(scene);
 
         stage.setTitle("Game Over");
@@ -194,7 +194,7 @@ public class NumberGuessingGame extends Application {
 
         congratsLayout.getChildren().addAll(congratsLabel, playAgainButton, exitButton);
 
-        Scene scene = new Scene(congratsLayout, 600, 400);
+        Scene scene = new Scene(congratsLayout, 800, 800);
         applyStylesheet(scene);
 
         stage.setTitle("Congratulations");
@@ -202,7 +202,7 @@ public class NumberGuessingGame extends Application {
     }
 
     private void applyStylesheet(Scene scene) {
-        URL stylesheet = getClass().getResource("/com/example/semesterproject/Style.css");
+        URL stylesheet = getClass().getResource("/com/example/semesterproject/NumberGuessingGame/Style.css");
         if (stylesheet != null) {
             scene.getStylesheets().add(stylesheet.toExternalForm());
         } else {
