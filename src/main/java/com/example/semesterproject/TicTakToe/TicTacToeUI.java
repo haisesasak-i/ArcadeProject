@@ -92,6 +92,10 @@ public class TicTacToeUI extends Application {
         submissionButton.setOnAction(e -> {
             String userName = nameField.getText();
             RadioButton button = (RadioButton) group.getSelectedToggle();
+            if (userName.isEmpty()) {
+                System.out.println("Username cannot be empty.");
+                return;
+            }
             if(button==null){
                 System.out.println("Game symbol cannot be empty.");
                 return;
@@ -99,10 +103,7 @@ public class TicTacToeUI extends Application {
             String gameSymbol = button.getText();
             String enemySymbol ="";
 
-            if (userName.isEmpty()) {
-                System.out.println("Username cannot be empty.");
-                return;
-            }
+
 
             if(gameSymbol.equalsIgnoreCase("X")){
                 enemySymbol ="O";

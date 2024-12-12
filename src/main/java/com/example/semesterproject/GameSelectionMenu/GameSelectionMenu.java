@@ -19,16 +19,15 @@ import com.example.semesterproject.BattleShip.BattleShipUI;
 import java.util.Random;
 
 public class GameSelectionMenu extends Application {
+
     @Override
     public void start(Stage primaryStage) {
         // Arcade Title
-
-
         Text title = new Text("🎮 Arcade Games 🎮");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 36));
         title.setFill(Color.DARKORANGE);
 
-        //craeting objects of differnt games
+        // Creating objects of different games
         TicTacToeUI tiktaktoe = new TicTacToeUI();
         NumberGuessingGame numberGuessingGame = new NumberGuessingGame();
         BattleShipUI battleShipUI = new BattleShipUI();
@@ -36,46 +35,41 @@ public class GameSelectionMenu extends Application {
 
         // Buttons for games
         Button ticTacToeButton = createGameButton("Tic Tac Toe");
-        ticTacToeButton.setOnAction(event -> {
-
-                tiktaktoe.start(primaryStage);
-        });
+        ticTacToeButton.setOnAction(event -> tiktaktoe.start(primaryStage));
 
         Button battleshipButton = createGameButton("Battleship");
-        battleshipButton.setOnAction(event -> {
-                battleShipUI.start(primaryStage);
-        });
+        battleshipButton.setOnAction(event -> battleShipUI.start(primaryStage));
+
         Button numberGuessingButton = createGameButton("Number Guessing");
-        numberGuessingButton.setOnAction(event -> {
-            numberGuessingGame.start(primaryStage);
-        });
+        numberGuessingButton.setOnAction(event -> numberGuessingGame.start(primaryStage));
+
         Button rockPaperScissorsButton = createGameButton("Rock Paper Scissors");
-        rockPaperScissorsButton.setOnAction(event -> {
-            rockPaperScissors.start(primaryStage);
-        });
+        rockPaperScissorsButton.setOnAction(event -> rockPaperScissors.start(primaryStage));
+
         Button randomGameButton = createGameButton("Random");
         randomGameButton.setOnAction(event -> {
             Random random = new Random();
-            int gameNumber =random.nextInt(4);
-            if(gameNumber ==0){
+            int gameNumber = random.nextInt(4);
+            if (gameNumber == 0) {
                 tiktaktoe.start(primaryStage);
-            }
-            else if(gameNumber == 1){
+            } else if (gameNumber == 1) {
                 battleShipUI.start(primaryStage);
-            }
-            else if(gameNumber ==2){
+            } else if (gameNumber == 2) {
                 numberGuessingGame.start(primaryStage);
-            }
-            else
+            } else {
                 rockPaperScissors.start(primaryStage);
-        });
-        Button exitButton = createGameButton("Exit");
-        exitButton.setOnAction(event -> {
-            System.exit(0);
+            }
         });
 
+        Button exitButton = createGameButton("Exit");
+        exitButton.setOnAction(event -> System.exit(0));
+
+        // Button for showing instructions
+        Button instructionsButton = createGameButton("Instructions");
+        instructionsButton.setOnAction(event -> showInstructions(primaryStage));
+
         // Layout
-        VBox vbox = new VBox(20, title, ticTacToeButton, battleshipButton, numberGuessingButton, rockPaperScissorsButton, randomGameButton,exitButton);
+        VBox vbox = new VBox(20, title, ticTacToeButton, battleshipButton, numberGuessingButton, rockPaperScissorsButton, randomGameButton, instructionsButton, exitButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(20));
         vbox.setStyle("-fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);");
@@ -98,9 +92,41 @@ public class GameSelectionMenu extends Application {
         button.setTextFill(Color.WHITE);
         button.setStyle("-fx-background-color: #ff6347; -fx-border-color: #ffffff; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-radius: 10px;");
         button.setPrefWidth(200);
-
-
         return button;
+    }
+
+    // Method to show instructions screen
+    private void showInstructions(Stage primaryStage) {
+        Text instructionTitle = new Text("Game Instructions");
+        instructionTitle.setFont(Font.font("Arial", FontWeight.BOLD, 36));
+        instructionTitle.setFill(Color.DARKORANGE);
+
+        // Sample instructions text (you can customize this further)
+        Text instructionsText = new Text("Welcome to the Arcade!\n\n"
+                + "Choose a game and enjoy!\n\n"
+                + "1. Tic Tac Toe: A classic 3x3 grid game.\n"
+                + "2. Battleship: Sink your opponent's ships.\n"
+                + "3. Number Guessing: Guess the number between 1 and 100.\n"
+                + "4. Rock Paper Scissors: A simple hand game.\n\n"
+                + "Click 'Continue' to go back to the game selection menu.");
+
+        instructionsText.setFont(Font.font("Arial", 18));
+        instructionsText.setFill(Color.WHITE);
+
+        Button continueButton = createGameButton("Continue");
+        continueButton.setOnAction(event -> {
+            start(primaryStage); // Go back to game selection screen
+        });
+
+        // Layout for the instruction screen
+        VBox instructionLayout = new VBox(20, instructionTitle, instructionsText, continueButton);
+        instructionLayout.setAlignment(Pos.CENTER);
+        instructionLayout.setPadding(new Insets(20));
+        instructionLayout.setStyle("-fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);");
+
+        // Scene setup for instructions
+        Scene instructionsScene = new Scene(instructionLayout, 800, 800);
+        primaryStage.setScene(instructionsScene);
     }
 
     public static void main(String[] args) {
