@@ -58,7 +58,7 @@ public class RockPaperScissors extends Application {
             System.out.println(i.getMessage());
         }
 
-        primaryStage.setTitle("Rock Paper Scissors - Username");
+        primaryStage.setTitle("Rock Paper Scissors");
         primaryStage.setScene(usernameScene);
         primaryStage.show();
     }
@@ -80,6 +80,7 @@ public class RockPaperScissors extends Application {
                 roundsToPlay = Integer.parseInt(inputField.getText());
                 if (roundsToPlay <= 0) throw new NumberFormatException();
             } catch (NumberFormatException ex) {
+                System.out.println("Now the game will be started with default round count which is 5");
                 roundsToPlay = 5; // Default to 5 if invalid input
             }
             showGameScene();

@@ -320,7 +320,7 @@ public class TicTacToeUI extends Application {
 
 
         });
-
+        stage.setTitle(oldStage.getTitle());
         stage.setScene(scene);
         stage.show();
     }
