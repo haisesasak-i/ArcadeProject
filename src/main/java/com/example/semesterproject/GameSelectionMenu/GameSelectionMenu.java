@@ -69,10 +69,13 @@ public class GameSelectionMenu extends Application {
             else
                 rockPaperScissors.start(primaryStage);
         });
-
+        Button exitButton = createGameButton("Exit");
+        exitButton.setOnAction(event -> {
+            System.exit(0);
+        });
 
         // Layout
-        VBox vbox = new VBox(20, title, ticTacToeButton, battleshipButton, numberGuessingButton, rockPaperScissorsButton, randomGameButton);
+        VBox vbox = new VBox(20, title, ticTacToeButton, battleshipButton, numberGuessingButton, rockPaperScissorsButton, randomGameButton,exitButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(20));
         vbox.setStyle("-fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);");
