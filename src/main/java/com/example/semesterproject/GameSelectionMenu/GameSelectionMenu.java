@@ -22,18 +22,18 @@ public class GameSelectionMenu extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Arcade Title
+
         Text title = new Text("🎮 Arcade Games 🎮");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 36));
         title.setFill(Color.DARKORANGE);
 
-        // Creating objects of different games
+
         TicTacToeUI tiktaktoe = new TicTacToeUI();
         NumberGuessingGame numberGuessingGame = new NumberGuessingGame();
         BattleShipUI battleShipUI = new BattleShipUI();
         RockPaperScissors rockPaperScissors = new RockPaperScissors();
 
-        // Buttons for games
+
         Button ticTacToeButton = createGameButton("Tic Tac Toe");
         ticTacToeButton.setOnAction(event -> tiktaktoe.start(primaryStage));
 
@@ -64,17 +64,17 @@ public class GameSelectionMenu extends Application {
         Button exitButton = createGameButton("Exit");
         exitButton.setOnAction(event -> System.exit(0));
 
-        // Button for showing instructions
+
         Button instructionsButton = createGameButton("Instructions");
         instructionsButton.setOnAction(event -> showInstructions(primaryStage));
 
-        // Layout
+
         VBox vbox = new VBox(20, title, ticTacToeButton, battleshipButton, numberGuessingButton, rockPaperScissorsButton, randomGameButton, instructionsButton, exitButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(20));
         vbox.setStyle("-fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);");
 
-        // Scene setup
+
         Scene scene = new Scene(vbox, 800, 800);
         primaryStage.setWidth(800);
         primaryStage.setHeight(800);
@@ -95,13 +95,13 @@ public class GameSelectionMenu extends Application {
         return button;
     }
 
-    // Method to show instructions screen
+
     private void showInstructions(Stage primaryStage) {
         Text instructionTitle = new Text("Game Instructions");
         instructionTitle.setFont(Font.font("Arial", FontWeight.BOLD, 36));
         instructionTitle.setFill(Color.DARKORANGE);
 
-        // Sample instructions text (you can customize this further)
+
         Text instructionsText = new Text("Welcome to the Arcade!\n\n"
                 + "Choose a game and enjoy!\n\n"
                 + "1. Tic Tac Toe: A classic 3x3 grid game.\n"
@@ -115,16 +115,16 @@ public class GameSelectionMenu extends Application {
 
         Button continueButton = createGameButton("Continue");
         continueButton.setOnAction(event -> {
-            start(primaryStage); // Go back to game selection screen
+            start(primaryStage);
         });
 
-        // Layout for the instruction screen
+
         VBox instructionLayout = new VBox(20, instructionTitle, instructionsText, continueButton);
         instructionLayout.setAlignment(Pos.CENTER);
         instructionLayout.setPadding(new Insets(20));
         instructionLayout.setStyle("-fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);");
 
-        // Scene setup for instructions
+
         Scene instructionsScene = new Scene(instructionLayout, 800, 800);
         primaryStage.setScene(instructionsScene);
     }

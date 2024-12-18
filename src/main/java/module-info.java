@@ -13,6 +13,7 @@ module com.example.semesterproject {
     exports com.example.semesterproject.RockPaperScissors;
     opens com.example.semesterproject.RockPaperScissors to javafx.fxml;
     exports  com.example.semesterproject.GameSelectionMenu;
+    exports com.example.semesterproject.LoginMenu;
 
 
 }
